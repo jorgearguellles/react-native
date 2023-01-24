@@ -34,7 +34,7 @@ export default function App() {
         onPress={startAddGoalHandler}
       />
       { isModalVisible 
-        ? <GoalInput onAddGoal={addGoalHandler} /> 
+        ? <GoalInput onAddGoal={addGoalHandler} visible={isModalVisible}/> 
         : null
       }
       <View style={styles.goalsContainer}>
