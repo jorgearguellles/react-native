@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Button, TextInput, Modal } from 'react-native';
 
 function GoalInput(props){
-  const { onAddGoal, visible } = props;
+  const { onAddGoal, visible, endAddGoalHandler } = props;
   const [enteredGoalText, setEnteredGoalText] = useState('');
 
   function goalInputHandler(enteredText) {
@@ -13,10 +13,6 @@ function GoalInput(props){
     onAddGoal(enteredGoalText);
     setEnteredGoalText('');
   };
-
-  function closeModalHandler(){
-    console.log('Close Modal')
-  }
 
   return (
     <Modal visible={visible} animationType="slide">  
@@ -37,7 +33,7 @@ function GoalInput(props){
           <View style={styles.button}>
             <Button 
               title='Cancel' 
-              onPress={closeModalHandler}
+              onPress={endAddGoalHandler}
               />
           </View>
         </View>

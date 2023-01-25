@@ -12,11 +12,16 @@ export default function App() {
     setIsModalVisible(true);
   };
 
+  function endAddGoalHandler(){
+    setIsModalVisible(false);
+  }
+
   function addGoalHandler(enteredGoalText) {
     setCourseGoals( currentCourseGoals => [
       ...currentCourseGoals, 
       { text: enteredGoalText, id: Math.random().toString()}
     ]);
+    endAddGoalHandler();
   };
   
   function deleteGoalHandler(id){
@@ -34,7 +39,11 @@ export default function App() {
         onPress={startAddGoalHandler}
       />
       { isModalVisible 
-        ? <GoalInput onAddGoal={addGoalHandler} visible={isModalVisible}/> 
+        ? <GoalInput 
+            onAddGoal={addGoalHandler}
+            visible={isModalVisible}
+            endAddGoalHandler={endAddGoalHandler}
+            /> 
         : null
       }
       <View style={styles.goalsContainer}>
@@ -63,6 +72,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   goalsContainer: {
+    padding: 10,
     flex: 5,
   },
 });
